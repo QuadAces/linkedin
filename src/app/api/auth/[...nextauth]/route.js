@@ -43,27 +43,29 @@ const handler = NextAuth({
     session: { strategy: "jwt" },
     callbacks: {
         async jwt({ token, account, profile }) {
+            
             // const client = await db
             // const database = client.db("notes-app")
             // const data = await database.collection("users").findOne({})
             // console.log(data);
 
             // console.log("jwt things ACCOUNT", account);
+            return {...token, ...account, ...profile}
         },
-        async session() {
+        async session({ session, user, token }) {
             // console.log("session things!");
         },
         async signIn({ user, account, profile, email, credentials }) {
             // console.log(account, "account!!");
-            const url = `https://api.linkedin.com/v2/people/(id: ${account.id_token})?oauth2_access_token=${account.access_token}` 
-            const response = await fetch(url, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'X-RestLi-Protocol-Version':'2.0.0'
-                },})       
-                const data = await response.json()
-                console.log("DATA HERE", data);    
+            // const url = `https://api.linkedin.com/v2/people/(id: ${account.id_token})?oauth2_access_token=${account.access_token}` 
+            // const response = await fetch(url, {
+            //     method: 'GET',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //         'X-RestLi-Protocol-Version':'2.0.0'
+            //     },})       
+            //     const data = await response.json()
+                // console.log("DATA HERE", data);    
 return NextResponse.redirect("localhost:3000/");
         },
     },

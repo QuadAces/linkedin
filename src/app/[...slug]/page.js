@@ -1,5 +1,6 @@
+   "use client"
    
-   
+   import { useSession } from "next-auth/react"
    // const data = {
     //     "public_identifier": "stu-cut-04372521a",
     //     "profile_pic_url": "https://static.licdn.com/aero-v1/sc/h/1c5u578iilxfi4m4dvc4q810q",
@@ -45,14 +46,11 @@
     //     "personal_numbers": []
     // }
 
-    import Activities from "@/src/components/UI/Activities";
-    import Articles from "@/src/components/UI/Articles";
-    import Educations from "@/src/components/UI/Educations";
-    import Experiences from "@/src/components/UI/Experiences";
-    import Interests from "@/src/components/UI/Interests";
-    import { Avatar, Button, Card,  } from "@nextui-org/react";
-    import { semanticColors } from "@nextui-org/theme";
-    import { Suspense } from "react";
+    import { Context } from "@/src/lib/context";
+import { semanticColors } from "@nextui-org/theme";
+import { Content } from "next/font/google";
+import { useContext } from "react";
+import { useScrollShadow } from "@nextui-org/react";
 
     // const data = {
     //     "public_identifier": "williamhgates",
@@ -404,11 +402,9 @@
         personal_numbers: [],
     };
 
-    import '../../components/UI/page.css'
     // import scrapedin from "scrapedin";
-    export default async function ProfilePage() {
+    export default function ProfilePage() {
 
-        console.log("THING HERE,", semanticColors.light.primary.DEFAULT);
         // const profileScraper = await scrapedin({email: "business@stuartcutbush.com", password: "Tdmapple1:)"})
         // const profile = await profileScraper("https://www.linkedin.com/in/stuart-cutbush-4b79a52a5/")
         // console.log(profile, "PROFILE HERE");
@@ -427,56 +423,8 @@
         //add articles as a secondary blog
         //!renderToStaticMarkup is a react function that exports to HTML files see: https://react.dev/reference/react-dom/server/renderToStaticMarkup
         //TODO: make the experiences list a half widget? + a photo/ OR make it a grid with education?
-        return (
-            <>
-<div style={{backgroundColor: "rgb(20,20,20)", width: "100vw", height: "10vh", display: "flex"}}>
- <Avatar src={data.profile_pic_url}></Avatar>
- <h2 
-className="header" >{data.first_name}</h2>
- <h2>
-    {data.last_name}
- </h2>
-</div>
-
-                    {/* <video style={{position: "absolute", top:0, right: 0, objectFit: "cover", width: "100vw", height: '80vh'}} className="videoTag" autoPlay loop muted>
-                        <source
-                            src="./assets/Rainbow_Nebula_4K_Motion_Background.mp4"
-                            type="video/mp4"
-                            />
-                    </video> */}
-                    <div style={{color: 'primary',width: "100vw", height: "80vh", top: 0, bottom: 0,}}>
-
-{/* Is pressable breaks card below because of some hydration issue? */}
-    {/* <Card style={{height: '30vh', width: "60vw", padding: '2rem', margin: "2rem", top: '20vh'}}> */}
-                <h2 style={{fontSize: "5vh"}}>{data.headline}</h2>
-                <h3>{data.full_name}</h3>
-                <h2>{data.occupation}</h2>
-                <Button className={'dark'} type="solid" color="primary" style={{width: "2rem"}}>See more</Button>
-    {/* </Card> */}
-    </div>
-
-    <div style={{display: "grid", gridTemplateColumns: "1fr"}} margin="auto" padding="auto" className="gap-4" >
-       
-
-                {/* {data.experiences ? ( */}
-
-                    <Experiences experiences={data.experiences}></Experiences>
-                {/* ) : null} */}
-
-                {/* {data.education ? ( */}
-                    <Educations educations={data.education}></Educations>
-                {/* ) : null} */}
-
-
-
-    </div>
-                {/* {data.interests ? (
-                    <Interests interests={data.interests}></Interests>
-                ) : null} */}
-                {/* {data.articles ? (
-                    <Articles articles={data.articles}></Articles>
-                ) : null} */}
-
-            </>
-        );
+       const {object} = useContext(Context)
+       const session = useSession()
+       const sessioText = JSON.stringify(session)
+        return <div>{object.words} {sessioText}</div>
     }
