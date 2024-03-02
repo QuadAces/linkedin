@@ -1,10 +1,9 @@
 "use client"
 import { useRouter } from 'next/navigation'
-import fetcher from '../fetcher'
-import { useContext, useRef } from 'react'
+import { useContext } from 'react'
 import { Context } from '../lib/context'
 import styles from './page.module.css'
-import { Card, } from '@nextui-org/react'
+import { Card } from '@nextui-org/react'
 export default function Home() {
   const router = useRouter()
   const { setObject } = useContext(Context)

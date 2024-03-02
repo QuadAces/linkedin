@@ -1,7 +1,6 @@
 "use client"
 
 import { useSession } from "next-auth/react"
-
 import { Context } from "@/src/lib/context";
 import { semanticColors } from "@nextui-org/theme";
 import { Content } from "next/font/google";
@@ -182,12 +181,11 @@ const data = {
 };
 
 // import scrapedin from "scrapedin";
-export default function ProfilePage() {
-
-
+export default function ProfilePage(id) {
     const { object } = useContext(Context)
     const session = useSession()
     const sessioText = JSON.stringify(session)
+    console.log(id)
     return <div className="flex flex-col bg-[#1E1E1E] min-h-screen">
         <Navbar />
         <Profile name="Bob" />
