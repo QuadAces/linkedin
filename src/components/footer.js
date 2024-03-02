@@ -16,13 +16,13 @@ export default function Footer({ phoneNumber = "Not Provided", email = "Not Prov
 
                         <div className="flex flex-row space-x-4 items-center cursor-pointer hover:underline" onClick={
                             () => navigator.clipboard.writeText("2")
-                        } ><MdEmail className=" w-10 h-10" /> Testing@test.com</div>
+                        } ><MdEmail className=" w-10 h-10" />{email}</div>
                     }
                     {
 
                         <div className="flex flex-row space-x-4 items-center cursor-pointer hover:underline" onClick={
                             () => navigator.clipboard.writeText("2")
-                        } > <MdPhone className=" w-10 h-10" /> 04040404004 </div>
+                        } > <MdPhone className=" w-10 h-10" /> {phoneNumber} </div>
                     }
                 </div>
                 <div>
