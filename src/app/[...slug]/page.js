@@ -51,6 +51,7 @@ import { semanticColors } from "@nextui-org/theme";
 import { Content } from "next/font/google";
 import { useContext } from "react";
 import { useScrollShadow } from "@nextui-org/react";
+import Footer from "@/src/components/footer";
 
     // const data = {
     //     "public_identifier": "williamhgates",
@@ -405,26 +406,11 @@ import { useScrollShadow } from "@nextui-org/react";
     // import scrapedin from "scrapedin";
     export default function ProfilePage() {
 
-        // const profileScraper = await scrapedin({email: "business@stuartcutbush.com", password: "Tdmapple1:)"})
-        // const profile = await profileScraper("https://www.linkedin.com/in/stuart-cutbush-4b79a52a5/")
-        // console.log(profile, "PROFILE HERE");
-        //framer motion!
-        //every page is made up of rows, and each row is a separate idea
-        //each row is made visibly distinct
-        //use background images for rows?
-        //give each row a vertical padding
-
-        //generic 3d shaders in the background until learn?
-        //null saftey on data?
-        //Experiences, activities, articles, interests, education
-        //navbar footer
-        //store the link in a db, so no duplicate requests/
-        //some personal webpage introduction -> experiences -> education -> interests
-        //add articles as a secondary blog
-        //!renderToStaticMarkup is a react function that exports to HTML files see: https://react.dev/reference/react-dom/server/renderToStaticMarkup
-        //TODO: make the experiences list a half widget? + a photo/ OR make it a grid with education?
+       
        const {object} = useContext(Context)
        const session = useSession()
        const sessioText = JSON.stringify(session)
-        return <div>{object.words} {sessioText}</div>
+        return <div>
+            <Footer></Footer>
+        </div>
     }
