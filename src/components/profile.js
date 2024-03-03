@@ -13,7 +13,7 @@ export default function profile({ name = "John Doe", imgsrc = "/assets/test.png"
         <div className="flex flex-col flex-grow space-y-4">
             <div className="text-6xl pb-4 border-b-1">{name}</div>
             <div className="flex flex-col space-y-4">
-                <div classname="text-lg mt-8 text-wrap">{about}</div>
+                <div className="text-lg mt-8 text-wrap">{about}</div>
             </div>
 
         </div>
