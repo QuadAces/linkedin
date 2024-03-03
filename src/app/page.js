@@ -10,7 +10,7 @@ export default function Home() {
   const { setObject } = useContext(Context);
   const session = useSession();
   function formSubmit(e) {
-    /*
+    
     e.preventDefault();
     // const email = e[0].value
     const formData = new FormData(e.target); // Get form data
@@ -20,7 +20,7 @@ export default function Home() {
     const mongoId = session._id;
     // const {data, error, isLoading} = useSWR(`${process.env.BACKEND_URL}/scrape/${e[url-info]}`, fetcher)
     //set object for context here
-    */
+    
     //setObject({ words: "hello!" });
     router.push(`http://localhost:3000/loading`);
   }
