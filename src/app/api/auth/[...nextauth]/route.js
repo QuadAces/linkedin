@@ -27,8 +27,8 @@ const handler = NextAuth({
             },
         }),
         GitHubProvider({
-            clientId: process.env.GITHUB_ID,
-            clientSecret: process.env.GITHUB_SECRET,
+            clientId: process.env.GITHUBID,
+            clientSecret: process.env.GITHUBSECRET,
         }),
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
@@ -44,6 +44,7 @@ const handler = NextAuth({
     callbacks: {
         async jwt({ token, account, profile }) {
             
+            console.log(token, "TOKEN", account, "ACCOUNT", profile, "PROFILE");
             // const client = await db
             // const database = client.db("notes-app")
             // const data = await database.collection("users").findOne({})
@@ -53,7 +54,10 @@ const handler = NextAuth({
             return {...token, ...account, ...profile}
         },
         async session({ session, user, token }) {
-            // console.log("session things!");
+            console.log("SESSION", session, "USER", user, "TOKEN", token);
+            session.user._id = user.sub;
+            return session;
+            
         },
         async signIn({ user, account, profile, email, credentials }) {
             // console.log(account, "account!!");
@@ -66,6 +70,7 @@ const handler = NextAuth({
             //     },})       
             //     const data = await response.json()
                 // console.log("DATA HERE", data);    
+                return true
 return NextResponse.redirect("localhost:3000/");
         },
     },

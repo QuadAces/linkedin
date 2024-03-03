@@ -4,15 +4,19 @@ import { useContext } from 'react'
 import { Context } from '../lib/context'
 import styles from './page.module.css'
 import { Card } from '@nextui-org/react'
+import { useSession } from 'next-auth/react'
 export default function Home() {
   const router = useRouter()
   const { setObject } = useContext(Context)
+  const session = useSession()
   function formSubmit(e) {
     e.preventDefault()
     // const email = e[0].value
     const formData = new FormData(e.target); // Get form data
     const values = Object.fromEntries(formData.entries()); // Convert form data to object
     console.log('Form Values:', values); // Log form values
+    console.log(session, "SESSION HERE");
+    const mongoId = session._id
     // const {data, error, isLoading} = useSWR(`${process.env.BACKEND_URL}/scrape/${e[url-info]}`, fetcher)
     //set object for context here
 
