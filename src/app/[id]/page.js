@@ -177,16 +177,22 @@ const data = {
 // import scrapedin from "scrapedin";
 export default function ProfilePage(id) {
   const { object } = useContext(Context);
+  console.log("aaa", object);
   const session = useSession();
   const sessioText = JSON.stringify(session);
   console.log(id);
+
   return (
     <div className="flex flex-col bg-[#1E1E1E] min-h-screen">
       <Navbar />
       <Profile
-        name="Bill Gates"
-        imgsrc="https://media.licdn.com/dms/image/D5603AQHv6LsdiUg1kw/profile-displayphoto-shrink_400_400/0/1695167344576?e=1715212800&v=beta&t=HhX7rPjgdjkA4WTRHavWo3GYoJd4R7246Sq6fGCmYfQ"
-        about="Co-chair of the Bill & Melinda Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger."
+        name={object.name}
+        imgsrc={object.pfp_link}
+        about={object.description}
+        location={object.location}
+        byline={object.byline}
+        experiences={object.experiences}
+        educations={object.educations}
       />
       <Footer></Footer>
     </div>

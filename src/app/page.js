@@ -1,18 +1,11 @@
 "use client";
 import { useRouter } from "next/navigation";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../lib/context";
 import styles from "./page.module.css";
 import { Card } from "@nextui-org/react";
 import { useSession } from "next-auth/react";
-"use client"
-import { useRouter } from 'next/navigation';
-import { useContext, useState } from 'react';
-import { Context } from '../lib/context';
-import styles from './page.module.css';
-import { Card } from '@nextui-org/react';
-import { useSession } from 'next-auth/react';
-import { encode } from 'next-auth/jwt';
+
 
 export default function Home() {
   const router = useRouter();
@@ -24,6 +17,7 @@ export default function Home() {
   function formSubmit(e) {
     
     e.preventDefault();
+    setLoading
     // const email = e[0].value
     const formData = new FormData(e.target); // Get form data
     const values = Object.fromEntries(formData.entries()); // Convert form data to object
@@ -35,11 +29,7 @@ export default function Home() {
     
     //setObject({ words: "hello!" });
     router.push(`http://localhost:3000/loading`);
-  }
-    e.preventDefault();
-    setLoading(true);
-
-    const formData = new FormData(e.target);
+    setLoading(false);
     const urlInfo = (formData.get('url-info') || '').replace('https://', '').replace('http://', '').replace('linkedin.com/in/', '').replace('www.', '');
     const email = formData.get('email-info');
     const phone = formData.get('phone-info');
@@ -78,6 +68,9 @@ export default function Home() {
         setLoading(false);
       });
 
+  }
+
+   
   
 
   return ( 
@@ -91,7 +84,7 @@ export default function Home() {
             Please enter the following information:
           </h1>
           <div className="flex flex-row">
-            <form onSubmit={formSubmit} className="space-x-4 flex flex-row flex-grow">
+            <form onSubmit={(e) => formSubmit(e)} className="space-x-4 flex flex-row flex-grow">
               <div className="flex flex-col space-y-4 flex-grow">
                 <input
                   id="url"
