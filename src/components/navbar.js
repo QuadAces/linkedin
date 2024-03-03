@@ -4,11 +4,11 @@ import { Button } from "@nextui-org/react"
 
 export default function Nav() {
 
-    return <Navbar shouldHideOnScroll style={{backgroundColor: "#111618", opacity: "0.7"}}>
+  return <Navbar shouldHideOnScroll style={{ backgroundColor: "#111618", opacity: "0.7" }}>
     <NavbarBrand>
-      <p style={{position: "relative", left: '-1vw', textAlign: "center",}} className="font-bold text-inherit">Really really really really long name</p>
+      <p className="font-bold text-inherit justify-start">Bill Gates</p>
     </NavbarBrand>
-    <NavbarContent className="hidden sm:flex gap-4" justify="center">
+    <NavbarContent className="hidden sm:flex gap-4 !justify-end">
       <NavbarItem>
         <Link color="foreground" href="#">
           Home
@@ -16,24 +16,16 @@ export default function Nav() {
       </NavbarItem>
       <NavbarItem>
         <Link href="#" aria-current="page">
-          My Empires
+          About Me
         </Link>
       </NavbarItem>
-      <NavbarItem>
-        <Link color="foreground" href="#">
-          Contact
-        </Link>
-      </NavbarItem>
-    </NavbarContent>
-    <NavbarContent justify="end">
-      
     </NavbarContent>
   </Navbar>
-    // const router = useRouter();
-    // return (
-    // <div className="flex flex-row space-x-8 h-20 text-4xl justify-end mx-8">
-    //     <div className="my-auto mr-auto">Bob Bob</div>
-    //     <div className="my-auto cursor-pointer hover:underline" onClick={() => router.push(`http://localhost:3000/words`)}>Home</div>
-    //     <div className="my-auto cursor-pointer hover:underline" onClick={() => router.push(`http://localhost:3000/words/resume`)}>Resume</div>
-    // </div>)
+  // const router = useRouter();
+  // return (
+  // <div className="flex flex-row space-x-8 h-20 text-4xl justify-end mx-8">
+  //     <div className="my-auto mr-auto">Bob Bob</div>
+  //     <div className="my-auto cursor-pointer hover:underline" onClick={() => router.push(`http://localhost:3000/words`)}>Home</div>
+  //     <div className="my-auto cursor-pointer hover:underline" onClick={() => router.push(`http://localhost:3000/words/resume`)}>Resume</div>
+  // </div>)
 }

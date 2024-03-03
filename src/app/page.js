@@ -1,3 +1,10 @@
+"use client";
+import { useRouter } from "next/navigation";
+import { useContext } from "react";
+import { Context } from "../lib/context";
+import styles from "./page.module.css";
+import { Card } from "@nextui-org/react";
+import { useSession } from "next-auth/react";
 "use client"
 import { useRouter } from 'next/navigation';
 import { useContext, useState } from 'react';
@@ -15,6 +22,20 @@ export default function Home() {
   const [error, setError] = useState(null);
 
   function formSubmit(e) {
+    
+    e.preventDefault();
+    // const email = e[0].value
+    const formData = new FormData(e.target); // Get form data
+    const values = Object.fromEntries(formData.entries()); // Convert form data to object
+    console.log("Form Values:", values); // Log form values
+    console.log(session, "SESSION HERE");
+    const mongoId = session._id;
+    // const {data, error, isLoading} = useSWR(`${process.env.BACKEND_URL}/scrape/${e[url-info]}`, fetcher)
+    //set object for context here
+    
+    //setObject({ words: "hello!" });
+    router.push(`http://localhost:3000/loading`);
+  }
     e.preventDefault();
     setLoading(true);
 
@@ -57,96 +78,58 @@ export default function Home() {
         setLoading(false);
       });
 
-    // Set object for context here
-  }
+  
 
-  return (
-    <main className={styles.main}>
-      <img src='/assets/Blue_Logo.png' style={{ position: 'absolute', width: '120px' }}></img>
-      <div className={styles.background} style={{ display: 'flex', textAlign: 'center', justifyContent: 'space-evenly', width: '100vw', height: '100vh', background: 'linear-gradient(180deg, rgba(172,238,252,1) 0%, rgba(23,171,255,1) 100%)' }}>
-        <Card style={{ backgroundColor: 'white', position: 'absolute', margin: '216px auto 400px auto', padding: '25px 260px 40px 260px', borderRadius: '80px', display: 'grid', gridTemplate: '1fr 1fr', justifyContent: 'space-evenly' }}>
-          <h1 style={{ paddingBottom: '30px', color: 'black', fontSize: '1.5rem', fontWeight: 'bold' }}>
-            Hi! <br></br>Please enter your LinkedIn profile URL below!
+  return ( 
+  <main className={styles.main}>
+      <img src="/assets/Blue_Logo.png" className="absolute w-16 h-12"></img>
+      <div className="flex text-center bg-gradient-to-r from-cyan-500 to-blue-500 content-evenly min-h-screen flex-grow bg-[#1E1E1E]">
+        <Card className="bg-white/25 m-auto p-12 w-[54rem] shadow-lg">
+          <h1 className="pb-4 text-xl font-bold text-white">
+            Hi [Name]!
+            <br />
+            Please enter the following information:
           </h1>
-          <form onSubmit={formSubmit}>
-            <div>
-              <label htmlFor='url' style={{ color: 'black', fontWeight: 'bold', fontSize: '1.5rem', position: 'absolute', left: '4rem', paddingTop: '25px' }}>
-                LinkedIn:
-              </label>
-              <input
-                id='url'
-                type='url'
-                required
-                name='url-info'
-                placeholder='www.linkedin.com/in/[profile]'
-                style={{
-                  border: '1px solid #000',
-                  width: '610px',
-                  borderRadius: '1rem',
-                  height: '60px',
-                  padding: '20px',
-                  textAlign: 'center',
-                  margin: '15px',
-                  fontSize: '20px',
-                  backgroundColor: 'white',
-                  color: 'black',
-                }}
-              />
-            </div>
-            <div>
-              <label htmlFor='email' style={{ color: 'black', fontWeight: 'bold', fontSize: '1.5rem', position: 'absolute', left: '4rem', paddingTop: '25px' }}>
-                Email:
-              </label>
-              <input
-                id='email'
-                type='email'
-                required
-                name='email-info'
-                placeholder='email@domain.com'
-                style={{
-                  border: '1px solid #000',
-                  width: '610px',
-                  borderRadius: '1rem',
-                  height: '60px',
-                  padding: '20px',
-                  textAlign: 'center',
-                  margin: '15px',
-                  fontSize: '20px',
-                  backgroundColor: 'white',
-                  color: 'black',
-                }}
-              />
-            </div>
-            <div>
-              <label htmlFor='phone' style={{ color: 'black', fontWeight: 'bold', fontSize: '1.5rem', position: 'absolute', left: '4rem', paddingTop: '25px' }}>
-                Phone:
-              </label>
-              <input
-                id='phone'
-                type='phone'
-                required
-                name='phone-info'
-                placeholder='Phone Number'
-                style={{
-                  border: '1px solid #000',
-                  width: '610px',
-                  borderRadius: '1rem',
-                  height: '60px',
-                  padding: '20px',
-                  textAlign: 'center',
-                  margin: '15px',
-                  fontSize: '20px',
-                  backgroundColor: 'white',
-                  color: 'black',
-                }}
-              />
-            </div>
-            <div style={{ paddingTop: '20px' }}>
-              <button style={{ color: 'black', backgroundColor: '#66b7f9', padding: '1.25rem 4rem', borderRadius: '20px' }}>Submit</button>
-            </div>
-          </form>
+          <div className="flex flex-row">
+            <form onSubmit={formSubmit} className="space-x-4 flex flex-row flex-grow">
+              <div className="flex flex-col space-y-4 flex-grow">
+                <input
+                  id="url"
+                  type="url"
+                  required
+                  name="url-info"
+                  placeholder="Linkedin: www.linkedin.com/in/[profile]"
+                  className="font-medium px-2 h-10 w-full bg-transparent/50 text-white border-b focus-within:outline-white/75"
+                />
+                <div>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    name="email-info"
+                    placeholder="Email: email@domain.com"
+                    className="font-medium px-2 h-10 w-full bg-transparent/50  text-white border-b focus-within:outline-white/75"
+                  />
+                </div>
+                <div>
+                  <input
+                    id="phone"
+                    type="phone"
+                    required
+                    name="phone-info"
+                    placeholder="Phone Number: 04040404040404"
+                    className="font-medium px-2 h-10 w-full bg-transparent/50 text-white border-b focus-within:outline-white/75"
+                  />
+                </div>
+              </div>
+              <div className="border-l border-white h-full px-4 !items-center !flex">
+                <button className="my-auto text-white bg-[#9DE49B] px-8 rounded-lg font-bold hover:shadow-white shadow-lg transition-shadow h-10 hover:text-white/75">
+                  Go!
+                </button>
+              </div>
+            </form>
+          </div>
         </Card>
       </div>
-    </main>
-  );
+    </main>)
 }
