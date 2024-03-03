@@ -9,6 +9,7 @@ import { useScrollShadow } from "@nextui-org/react";
 import Footer from "@/src/components/footer";
 import Profile from "../../components/profile";
 import Navbar from "@/src/components/navbar";
+import Resume from "@/src/components/resume";
 const data = {
     public_identifier: " v",
     profile_pic_url:
@@ -189,6 +190,7 @@ export default function ProfilePage(id) {
     return <div className="flex flex-col bg-[#1E1E1E] min-h-screen">
         <Navbar />
         <Profile name="Bob" />
+        <Resume></Resume>
         <Footer></Footer>
     </div>
 }
