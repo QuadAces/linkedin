@@ -9,8 +9,8 @@ export default function Resume({ educations = [], experiences = [] }) {
                 <div className="flex flex-row flex-grow space-x-12">
                     <div className="text-2xl">Education</div>
                     <div className=" flex flex-col space-y-8">
-                        {educations.map(({ URL, name, year_period }) => (
-                            <div className="flex flex-row space-x-4">
+                        {educations.map(({ URL, name, year_period }, index) => (
+                            <div key={index} className="flex flex-row space-x-4">
                                 <Image
                                     src={URL !== null ? URL : "/assets/image.png"}
                                     className="w-16 h-16"
@@ -28,8 +28,8 @@ export default function Resume({ educations = [], experiences = [] }) {
                 <div className="flex flex-row space-x-8 flex-grow">
                     <div className="text-2xl">Experience</div>
                     <div className="overflow-auto h-32  space-y-8">
-                        {experiences.map(({ URL, name, role, year_period }) => (
-                            <div className="flex flex-row space-x-4">
+                        {experiences.map(({ URL, name, role, year_period }, index) => (
+                            <div key={index} className="flex flex-row space-x-4">
                                 <Image
                                     src={URL !== null ? URL : "/assets/image.png"}
                                     className="w-16 h-16"
