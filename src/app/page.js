@@ -25,129 +25,44 @@ export default function Home() {
   }
   return (
     <main className={styles.main}>
-      <img src="/assets/Blue_Logo.png" className="absolute w-16 h-16"></img>
+      <img src="/assets/Blue_Logo.png" className="absolute w-16 h-12"></img>
       <div className="flex text-center content-evenly min-h-screen flex-grow bg-[#1E1E1E]">
         <Card className="bg-white m-auto flex flex-col p-12">
           <h1 className="pb-4 text-xl font-bold text-black">
             Hi! <br />
-            Please enter your linkedin profile URL below!
+            Please enter your LinkedIn profile URL below!
           </h1>
-          <form onSubmit={formSubmit}>
+          <form onSubmit={formSubmit} className="space-y-4">
+            <input
+              id="url"
+              type="url"
+              required
+              name="url-info"
+              placeholder="Linkedin: www.linkedin.com/in/[profile]"
+              className="font-medium px-2 h-10 w-full bg-white text-black border border-black roundedfocus-within:outline-white/75 rounded"
+            />
             <div>
-              <label
-                htmlFor="url"
-                className="text-black text-bold text-xl"
-                style={{
-                  color: "black",
-                  fontWeight: "bold",
-                  fontSize: "1.5rem",
-                  position: "absolute",
-                  left: "4rem",
-                  paddingTop: "25px",
-                }}
-              >
-                Linkedin:
-              </label>
-              <input
-                id="url"
-                type="url"
-                required
-                name="url-info"
-                placeholder="www.linkedin.com/in/[profile]"
-                className=" border"
-                {/*style={{
-                  border: "1px solid #000",
-                  width: "610px",
-                  borderRadius: "1rem",
-                  height: "60px",
-                  padding: "20px",
-                  textAlign: "center",
-                  margin: "15px",
-                  fontSize: "20px",
-                  backgroundColor: "white",
-                  color: "black",
-                }}*/}
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="email"
-                style={{
-                  color: "black",
-                  fontWeight: "bold",
-                  fontSize: "1.5rem",
-                  position: "absolute",
-                  left: "4rem",
-                  paddingTop: "25px",
-                }}
-              >
-                Email:
-              </label>
-
               <input
                 id="email"
                 type="email"
                 required
                 name="email-info"
-                placeholder="email@domain.com"
-                style={{
-                  border: "1px solid #000",
-                  width: "610px",
-                  borderRadius: "1rem",
-                  height: "60px",
-                  padding: "20px",
-                  textAlign: "center",
-                  margin: "15px",
-                  fontSize: "20px",
-                  backgroundColor: "white",
-                  color: "black",
-                }}
+                placeholder="Email: email@domain.com"
+                className="font-medium px-2 h-10 w-full bg-white text-black border border-black roundedfocus-within:outline-white/75 rounded"
               />
             </div>
             <div>
-              <label
-                htmlFor="phone"
-                style={{
-                  color: "black",
-                  fontWeight: "bold",
-                  fontSize: "1.5rem",
-                  position: "absolute",
-                  left: "4rem",
-                  paddingTop: "25px",
-                }}
-              >
-                Phone:
-              </label>
-
               <input
                 id="phone"
                 type="phone"
                 required
                 name="phone-info"
-                placeholder="Phone Number"
-                style={{
-                  border: "1px solid #000",
-                  width: "610px",
-                  borderRadius: "1rem",
-                  height: "60px",
-                  padding: "20px",
-                  textAlign: "center",
-                  margin: "15px",
-                  fontSize: "20px",
-                  backgroundColor: "white",
-                  color: "black",
-                }}
+                placeholder="Phone Number: 04040404040404"
+                className="font-medium px-2 h-10 w-full bg-white text-black border border-black roundedfocus-within:outline-white/75 rounded"
               />
             </div>
             <div style={{ paddingTop: "20px" }}>
-              <button
-                style={{
-                  color: "black",
-                  backgroundColor: "#66b7f9",
-                  padding: "1.25rem 4rem",
-                  borderRadius: "20px",
-                }}
-              >
+              <button className="text-black bg-[#66b7f9] px-2 rounded-md h-8 hover:text-white transition-colors">
                 Submit
               </button>
             </div>
