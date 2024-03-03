@@ -27,14 +27,14 @@ const handler = NextAuth({
                 }
             },
         }),
-        GitHubProvider({
-            clientId: process.env.GITHUBID,
-            clientSecret: process.env.GITHUBSECRET,
-        }),
-        GoogleProvider({
-            clientId: process.env.GOOGLE_CLIENT_ID,
-            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        }),
+        // GitHubProvider({
+        //     clientId: process.env.GITHUBID,
+        //     clientSecret: process.env.GITHUBSECRET,
+        // }),
+        // GoogleProvider({
+        //     clientId: process.env.GOOGLE_CLIENT_ID,
+        //     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        // }),
     ],
     adapter: MongoDBAdapter(db, {
         databaseName: "linkedinApp",
