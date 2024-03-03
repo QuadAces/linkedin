@@ -6,6 +6,7 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import { NextResponse } from "next/server";
 
 import db from "@/src/lib/database";
+import { ObjectId } from "mongodb";
 
 const handler = NextAuth({
     providers: [
@@ -42,30 +43,33 @@ const handler = NextAuth({
     debug: process.env.NODE_ENV !== "production",
     session: { strategy: "jwt" },
     callbacks: {
-        async jwt({ token, account, profile }) {
+        // async jwt({ token, account, profile }) {
             
-            console.log(token, "TOKEN", account, "ACCOUNT", profile, "PROFILE");
-            // const client = await db
-            // const database = client.db("notes-app")
-            // const data = await database.collection("users").findOne({})
-            // console.log(data);
+        //     console.log(token, "TOKEN", account, "ACCOUNT", profile, "PROFILE");
+        //     // const client = await db
+        //     // const database = client.db("notes-app")
+        //     // const data = await database.collection("users").findOne({})
+        //     // console.log(data);
 
-            console.log(account, "ACCOUNT HERE NOT SUS");
-            // console.log("jwt things ACCOUNT", account);
-           const client = await global._mongoClientPromise
-           const id_token = account.id_token 
+        //     // console.log("jwt things ACCOUNT", account);
+        //    const client = await global._mongoClientPromise
            
-           if (id_token != undefined) {
-               const db = await client.db("linkedinApp").collection("users").findOne({id_token: id_token});
-               console.log(db, "DATA HERE PROMISE");
-            }
+        //    if (account) {
+        //     // console.log(token, "TOKEN HERREEE");
+        //     //    const db = await client.db("linkedinApp").collection("accounts").findOne({userId: new ObjectId(token.sub)});
+        //     //    const response = await JSON.stringify(db)
+        //     //    console.log(response, "DATA REALLY HERE"); 
+
+        //        // token.mongoId = 
+        //     }
             // const users = await database.collection('users').find({}).toArray()
             // token.userId = account.userId
             // return {...token, ...account, ...profile}
-        },
-        async session({ session, user, token }) {
+        // },
+        async session({ session, token, user }) {
             console.log("SESSION", session, "USER", user, "TOKEN", token);
-            // session.user._id = token.userId
+            // session.MongoId = token.sub
+
             return session;
             
         },
