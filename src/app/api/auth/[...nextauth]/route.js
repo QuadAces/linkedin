@@ -68,7 +68,7 @@ const handler = NextAuth({
         // },
         async session({ session, token, user }) {
             console.log("SESSION", session, "USER", user, "TOKEN", token);
-            // session.MongoId = token.sub
+            session.MongoId = token.sub
 
             return session;
             
