@@ -50,12 +50,22 @@ const handler = NextAuth({
             // const data = await database.collection("users").findOne({})
             // console.log(data);
 
+            console.log(account, "ACCOUNT HERE NOT SUS");
             // console.log("jwt things ACCOUNT", account);
-            return {...token, ...account, ...profile}
+           const client = await global._mongoClientPromise
+           const id_token = account.id_token 
+           
+           if (id_token != undefined) {
+               const db = await client.db("linkedinApp").collection("users").findOne({id_token: id_token});
+               console.log(db, "DATA HERE PROMISE");
+            }
+            // const users = await database.collection('users').find({}).toArray()
+            // token.userId = account.userId
+            // return {...token, ...account, ...profile}
         },
         async session({ session, user, token }) {
             console.log("SESSION", session, "USER", user, "TOKEN", token);
-            session.user._id = user.sub;
+            // session.user._id = token.userId
             return session;
             
         },
