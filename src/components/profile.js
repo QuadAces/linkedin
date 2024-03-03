@@ -25,7 +25,7 @@ export default function profile({
         <div className="flex flex-col space-y-4">
           <div classname="text-lg mt-8 text-wrap">{about}</div>
         </div>
-        <Resume></Resume>
+        <Resume/>
       </div>
     </div>
   );

@@ -26,47 +26,52 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <img src="/assets/Blue_Logo.png" className="absolute w-16 h-12"></img>
-      <div className="flex text-center content-evenly min-h-screen flex-grow bg-[#1E1E1E]">
-        <Card className="bg-white m-auto flex flex-col p-12">
-          <h1 className="pb-4 text-xl font-bold text-black">
-            Hi! <br />
-            Please enter your LinkedIn profile URL below!
+      <div className="flex text-center bg-gradient-to-r from-cyan-500 to-blue-500 content-evenly min-h-screen flex-grow bg-[#1E1E1E]">
+        <Card className="bg-white/25 m-auto p-12 w-[54rem] shadow-lg">
+          <h1 className="pb-4 text-xl font-bold text-white">
+            Hi [Name]!
+            <br />
+            Please enter the following information:
           </h1>
-          <form onSubmit={formSubmit} className="space-y-4">
-            <input
-              id="url"
-              type="url"
-              required
-              name="url-info"
-              placeholder="Linkedin: www.linkedin.com/in/[profile]"
-              className="font-medium px-2 h-10 w-full bg-white text-black border border-black roundedfocus-within:outline-white/75 rounded"
-            />
-            <div>
-              <input
-                id="email"
-                type="email"
-                required
-                name="email-info"
-                placeholder="Email: email@domain.com"
-                className="font-medium px-2 h-10 w-full bg-white text-black border border-black roundedfocus-within:outline-white/75 rounded"
-              />
-            </div>
-            <div>
-              <input
-                id="phone"
-                type="phone"
-                required
-                name="phone-info"
-                placeholder="Phone Number: 04040404040404"
-                className="font-medium px-2 h-10 w-full bg-white text-black border border-black roundedfocus-within:outline-white/75 rounded"
-              />
-            </div>
-            <div style={{ paddingTop: "20px" }}>
-              <button className="text-black bg-[#66b7f9] px-2 rounded-md h-8 hover:text-white transition-colors">
-                Submit
-              </button>
-            </div>
-          </form>
+          <div className="flex flex-row">
+            <form onSubmit={formSubmit} className="space-x-4 flex flex-row flex-grow">
+              <div className="flex flex-col space-y-4 flex-grow">
+                <input
+                  id="url"
+                  type="url"
+                  required
+                  name="url-info"
+                  placeholder="Linkedin: www.linkedin.com/in/[profile]"
+                  className="font-medium px-2 h-10 w-full bg-transparent/50 text-white border-b focus-within:outline-white/75"
+                />
+                <div>
+                  <input
+                    id="email"
+                    type="email"
+                    required
+                    name="email-info"
+                    placeholder="Email: email@domain.com"
+                    className="font-medium px-2 h-10 w-full bg-transparent/50  text-white border-b focus-within:outline-white/75"
+                  />
+                </div>
+                <div>
+                  <input
+                    id="phone"
+                    type="phone"
+                    required
+                    name="phone-info"
+                    placeholder="Phone Number: 04040404040404"
+                    className="font-medium px-2 h-10 w-full bg-transparent/50 text-white border-b focus-within:outline-white/75"
+                  />
+                </div>
+              </div>
+              <div className="border-l border-white h-full px-4 !items-center !flex">
+                <button className="my-auto text-white bg-[#9DE49B] px-8 rounded-lg font-bold hover:shadow-white shadow-lg transition-shadow h-10 hover:text-white/75">
+                  Go!
+                </button>
+              </div>
+            </form>
+          </div>
         </Card>
       </div>
     </main>
