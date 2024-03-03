@@ -6,7 +6,7 @@ export default function Nav() {
 
   return <Navbar shouldHideOnScroll style={{ backgroundColor: "#111618", opacity: "0.7" }}>
     <NavbarBrand>
-      <p className="font-bold text-inherit justify-start">Really really really really long name</p>
+      <p className="font-bold text-inherit justify-start">Bill Gates</p>
     </NavbarBrand>
     <NavbarContent className="hidden sm:flex gap-4 !justify-end">
       <NavbarItem>
@@ -16,12 +16,7 @@ export default function Nav() {
       </NavbarItem>
       <NavbarItem>
         <Link href="#" aria-current="page">
-          My Empires
-        </Link>
-      </NavbarItem>
-      <NavbarItem>
-        <Link color="foreground" href="#">
-          Contact
+          About Me
         </Link>
       </NavbarItem>
     </NavbarContent>

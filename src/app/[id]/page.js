@@ -183,7 +183,11 @@ export default function ProfilePage(id) {
   return (
     <div className="flex flex-col bg-[#1E1E1E] min-h-screen">
       <Navbar />
-      <Profile name="Bob" />
+      <Profile
+        name="Bill Gates"
+        imgsrc="https://media.licdn.com/dms/image/D5603AQHv6LsdiUg1kw/profile-displayphoto-shrink_400_400/0/1695167344576?e=1715212800&v=beta&t=HhX7rPjgdjkA4WTRHavWo3GYoJd4R7246Sq6fGCmYfQ"
+        about="Co-chair of the Bill & Melinda Gates Foundation. Founder of Breakthrough Energy. Co-founder of Microsoft. Voracious reader. Avid traveler. Active blogger."
+      />
       <Footer></Footer>
     </div>
   );
