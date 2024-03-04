@@ -9,9 +9,8 @@ import { useSession } from "next-auth/react";
 
 export default function Home() {
   const router = useRouter();
-  const { setObject, object } = useContext(Context);
+  const { setObject, object, loading, setLoading } = useContext(Context);
   const session = useSession();
-  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   function formSubmit(e) {

@@ -9,11 +9,12 @@ import { SessionProvider } from 'next-auth/react';
 
 export function Providers({ children }) {
   const [object, setObject] = useState({})
+  const [loading, setLoading] = useState(false)
   return (
     <NextUIProvider>
       <NextThemesProvider attribute="class" defaultTheme="dark">
         <SessionProvider>
-          <Context.Provider value={{ object, setObject }}>
+          <Context.Provider value={{ object, setObject, loading, setLoading }}>
             {children}
           </Context.Provider>
         </SessionProvider>
