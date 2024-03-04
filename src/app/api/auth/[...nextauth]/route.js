@@ -13,6 +13,8 @@ const handler = NextAuth({
         LinkedInProvider({
             clientId: process.env.LINKEDIN_CLIENT_ID,
             clientSecret: process.env.LINKEDIN_CLIENT_SECRET,
+            // scope: 'r_liteprofile',
+             
             //params has a url prop to send requests for scopes to?
             authorization: { params: { scope: 'profile email openid' } },
             issuer: 'https://www.linkedin.com',
@@ -23,7 +25,10 @@ const handler = NextAuth({
                     name: profile.name,
                     firstname: profile.given_name,
                     lastname: profile.family_name,
-                    email: profile.email
+                    email: profile.email,
+                    image: profile.image,
+
+
                 }
             },
         }),
@@ -43,37 +48,25 @@ const handler = NextAuth({
     debug: process.env.NODE_ENV !== "production",
     session: { strategy: "jwt" },
     callbacks: {
-        // async jwt({ token, account, profile }) {
+        async jwt({ token, account, profile }) {
             
-        //     console.log(token, "TOKEN", account, "ACCOUNT", profile, "PROFILE");
-        //     // const client = await db
-        //     // const database = client.db("notes-app")
-        //     // const data = await database.collection("users").findOne({})
-        //     // console.log(data);
+            console.log(token, "TOKEN", account, "ACCOUNT", profile, "PROFILE");
 
-        //     // console.log("jwt things ACCOUNT", account);
-        //    const client = await global._mongoClientPromise
-           
-        //    if (account) {
-        //     // console.log(token, "TOKEN HERREEE");
-        //     //    const db = await client.db("linkedinApp").collection("accounts").findOne({userId: new ObjectId(token.sub)});
-        //     //    const response = await JSON.stringify(db)
-        //     //    console.log(response, "DATA REALLY HERE"); 
-
-        //        // token.mongoId = 
-        //     }
-            // const users = await database.collection('users').find({}).toArray()
-            // token.userId = account.userId
-            // return {...token, ...account, ...profile}
-        // },
+            return token
+          
+        },
         async session({ session, token, user }) {
-            console.log("SESSION", session, "USER", user, "TOKEN", token);
+            // console.log("SESSION", session, "USER", user, "TOKEN", token);
             session.MongoId = token.sub
+            
 
             return session;
             
         },
         async signIn({ user, account, profile, email, credentials }) {
+
+            console.log("start",user, account, profile, email, credentials, "END");
+
             // console.log(account, "account!!");
             // const url = `https://api.linkedin.com/v2/people/(id: ${account.id_token})?oauth2_access_token=${account.access_token}` 
             // const response = await fetch(url, {
@@ -85,7 +78,6 @@ const handler = NextAuth({
             //     const data = await response.json()
                 // console.log("DATA HERE", data);    
                 return true
-return NextResponse.redirect("localhost:3000/");
         },
     },
     events: {

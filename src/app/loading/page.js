@@ -5,7 +5,7 @@ import { useEffect } from "react";
 export default function Page() {
   const router = useRouter();
   useEffect(() => {
-    setTimeout(() => router.push(`http://localhost:3000/billgates`), 10000);
+    setTimeout(() => router.push(`/billgates`), 10000);
   }, []);
   return (
     <div className="min-h-screen bg-gradient-to-r from-cyan-500 to-blue-500 w-full flex items-center">

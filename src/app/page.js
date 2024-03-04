@@ -28,7 +28,7 @@ export default function Home() {
     //set object for context here
     
     //setObject({ words: "hello!" });
-    router.push(`http://localhost:3000/loading`);
+    router.push(`/loading`);
     setLoading(false);
     const urlInfo = (formData.get('url-info') || '').replace('https://', '').replace('http://', '').replace('linkedin.com/in/', '').replace('www.', '');
     const email = formData.get('email-info');
