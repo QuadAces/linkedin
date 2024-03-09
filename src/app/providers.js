@@ -26,7 +26,9 @@ export function Providers({ children }) {
       <NextThemesProvider attribute="class" defaultTheme="dark">
         <SessionProvider>
           <Provider store={store}>
-            <GetThatToken>{children}</GetThatToken>
+            {/* <GetThatToken> */}
+              {children}
+            {/* </GetThatToken> */}
           </Provider>
         </SessionProvider>
       </NextThemesProvider>
