@@ -16,12 +16,6 @@ export interface UserOtherContacts {
     data : string
 }
 
-export interface UserContacts {
-    phoneNumber: string,
-    email : string,
-    other : UserOtherContacts[],
-}
-
 export interface UserProfile {
     name : string,
     imgsrc? : string,
@@ -32,4 +26,5 @@ export interface UserProfile {
     byline : string,
     educations? : UserEducation[],
     experiences? : UserExperience[],
+    otherContacts : UserOtherContacts[],
 }

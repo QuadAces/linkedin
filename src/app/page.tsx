@@ -1,34 +1,28 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useContext, useState } from "react";
-import { Context } from "../lib/context";
 import styles from "./page.module.css";
 import { Card } from "@nextui-org/react";
 import { useSession } from "next-auth/react";
+import { useGetProfileQuery } from "../lib/slices/clientAPI";
 
 
 export default function Home() {
   const router = useRouter();
-  const { setObject, object, loading, setLoading } = useContext(Context);
   const session = useSession();
   const [error, setError] = useState(null);
-
+/*
   function formSubmit(e) {
     
     e.preventDefault();
-    setLoading
     // const email = e[0].value
     const formData = new FormData(e.target); // Get form data
     const values = Object.fromEntries(formData.entries()); // Convert form data to object
     console.log("Form Values:", values); // Log form values
     console.log(session, "SESSION HERE");
     const mongoId = session._id;
-    // const {data, error, isLoading} = useSWR(`${process.env.BACKEND_URL}/scrape/${e[url-info]}`, fetcher)
-    //set object for context here
-    
-    //setObject({ words: "hello!" });
+
     router.push(`/loading`);
-    setLoading(false);
     const urlInfo = (formData.get('url-info') || '').replace('https://', '').replace('http://', '').replace('linkedin.com/in/', '').replace('www.', '');
     const email = formData.get('email-info');
     const phone = formData.get('phone-info');
@@ -70,7 +64,11 @@ export default function Home() {
   }
 
    
-  
+  */
+
+  function formSubmit(e : React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
 
   return ( 
   <main className={styles.main}>

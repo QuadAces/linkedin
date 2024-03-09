@@ -1,11 +1,11 @@
 "use client";
 
 import { useSession } from "next-auth/react";
-import { Context } from "@/src/lib/context";
-import { useContext } from "react";
+import { Fragment } from "react";
 import Footer from "@/src/components/footer";
 import Profile from "../../components/profile";
 import Navbar from "@/src/components/navbar";
+import { useGetProfileQuery } from "@/src/lib/slices/clientAPI";
 const data = {
   public_identifier: " v",
   profile_pic_url:
@@ -176,19 +176,31 @@ const data = {
 
 // import scrapedin from "scrapedin";
 export default function ProfilePage(id) {
-  const { profile, contacts } = useContext(Context);
-  console.log("aaa", profile);
+  //const { profile, contacts } = useContext(Context);
+  const { data, isLoading, isFetching, isError } = useGetProfileQuery(id);
+  //console.log("aaa", profile);
   const session = useSession();
   //const sessionText = JSON.stringify(session);
-  console.log(id);
+  console.log(data);
 
   return (
     <div className="flex flex-col bg-[#1E1E1E] min-h-screen">
-      <Navbar />
-      <Profile
-      {...profile}
-      />
-      <Footer copyright={profile.name} contacts={{...contacts}}></Footer>
+      {!isError && data !== undefined ? (
+        <Fragment>
+          <Navbar />
+          <Profile {...data} />
+          <Footer
+            copyright={data.name}
+            other={data.otherContacts}
+            email={data.email}
+            phoneNumber={data.phone}
+          ></Footer>
+        </Fragment>
+      ) : (
+        <Fragment>
+          <h1 className="m-auto text-4xl text-red-600">An error has occured!</h1>
+        </Fragment>
+      )}
     </div>
   );
 }

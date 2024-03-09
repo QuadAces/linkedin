@@ -2,19 +2,19 @@ import { Divider } from "@nextui-org/react";
 import Link from "next/link";
 import { Fragment } from "react";
 import { MdEmail, MdPhone } from "react-icons/md";
-import { UserContacts } from "../types/user";
+import { UserOtherContacts } from "../types/user";
 
 interface FooterProps {
-  contacts: UserContacts;
+  phoneNumber : string,
+  email : string,
+  other : UserOtherContacts[],
   copyright: string;
 }
 
 export default function Footer({
-  contacts: {
-    phoneNumber = "0414694206",
-    email = "BillGates@gmail.com",
-    other = [],
-  },
+  phoneNumber = "0414694206",
+  email = "BillGates@gmail.com",
+  other = [],
   copyright =  "Bill Gates",
 }: FooterProps) {
   //contacts will be an array

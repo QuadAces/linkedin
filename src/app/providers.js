@@ -1,24 +1,35 @@
 // app/providers.tsx
-'use client'
+"use client";
 
-import { NextUIProvider } from '@nextui-org/react'
+import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { Context } from '../lib/context';
-import { useState } from 'react';
-import { SessionProvider } from 'next-auth/react';
+import { useEffect, useState } from "react";
+import { SessionProvider, useSession } from "next-auth/react";
+import { Provider, useDispatch } from "react-redux";
+import store from "../lib/store";
+import { setToken } from "../lib/slices/auth";
+
+function GetThatToken({ children }) {
+  const { data: session } = useSession();
+  const dispatch = useDispatch();
+  useEffect(() => {
+    if (session.user) {
+      dispatch(setToken({ token: session.user.token, expires: null }));
+    }
+  }, [session, dispatch, setToken]);
+  return { children };
+}
 
 export function Providers({ children }) {
-  const [object, setObject] = useState({})
-  const [loading, setLoading] = useState(false)
   return (
     <NextUIProvider>
       <NextThemesProvider attribute="class" defaultTheme="dark">
         <SessionProvider>
-          <Context.Provider value={{ object, setObject, loading, setLoading }}>
-            {children}
-          </Context.Provider>
+          <Provider store={store}>
+            <GetThatToken>{children}</GetThatToken>
+          </Provider>
         </SessionProvider>
       </NextThemesProvider>
     </NextUIProvider>
-  )
+  );
 }

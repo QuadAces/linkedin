@@ -1,8 +1,5 @@
 import Image from "next/image";
-import { MdMessage, MdPhone } from "react-icons/md";
 import Resume from "./resume";
-import { useContext } from "react";
-import { Context } from "../lib/context";
 import { UserProfile } from "../types/user";
 
 export default function profile({
@@ -10,8 +7,6 @@ export default function profile({
     imgsrc = "/assets/image.png",
     location = "Australia",
     about = "Sample Text",
-    email = "1234",
-    phone = "1234",
     byline = "",
     educations = [],
     experiences = [],
