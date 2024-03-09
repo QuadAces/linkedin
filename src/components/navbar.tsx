@@ -1,10 +1,9 @@
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react"
 import Link from "next/link"
-import { Button } from "@nextui-org/react"
 
 export default function Nav() {
 
-  return <Navbar shouldHideOnScroll style={{ backgroundColor: "#111618", opacity: "0.7" }}>
+  return <Navbar shouldHideOnScroll className="bg-[#111618]/75">
     <NavbarBrand>
       <p className="font-bold text-inherit justify-start">Bill Gates</p>
     </NavbarBrand>

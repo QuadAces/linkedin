@@ -2,12 +2,21 @@ import { Divider } from "@nextui-org/react";
 import Link from "next/link";
 import { Fragment } from "react";
 import { MdEmail, MdPhone } from "react-icons/md";
+import { UserContacts } from "../types/user";
+
+interface FooterProps {
+  contacts: UserContacts;
+  copyright: string;
+}
+
 export default function Footer({
-  phoneNumber = "0414694206",
-  email = "BillGates@gmail.com",
-  contacts = [],
-  copyRight = { name: "Bill Gates" },
-}) {
+  contacts: {
+    phoneNumber = "0414694206",
+    email = "BillGates@gmail.com",
+    other = [],
+  },
+  copyright =  "Bill Gates",
+}: FooterProps) {
   //contacts will be an array
   //copyright is an object with a name and image and year
   const year = new Date().getFullYear();
@@ -31,7 +40,7 @@ export default function Footer({
           {
             <div
               className="flex flex-row space-x-4 items-center cursor-pointer hover:underline"
-              onClick={() => navigator.clipboard.writeText(phonenumber)}
+              onClick={() => navigator.clipboard.writeText(phoneNumber)}
             >
               {" "}
               <MdPhone className=" w-10 h-10" /> {phoneNumber}{" "}
@@ -39,7 +48,7 @@ export default function Footer({
           }
         </div>
         <div>
-          ©{year} {copyRight.name} Powered by{" "}
+          ©{year} {copyright} Powered by{" "}
           <Link href="./about-us" className="underline">
             My Personal Page
           </Link>

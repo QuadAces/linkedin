@@ -176,25 +176,19 @@ const data = {
 
 // import scrapedin from "scrapedin";
 export default function ProfilePage(id) {
-  const { object } = useContext(Context);
-  console.log("aaa", object);
+  const { profile, contacts } = useContext(Context);
+  console.log("aaa", profile);
   const session = useSession();
-  const sessioText = JSON.stringify(session);
+  //const sessionText = JSON.stringify(session);
   console.log(id);
 
   return (
     <div className="flex flex-col bg-[#1E1E1E] min-h-screen">
       <Navbar />
       <Profile
-        name={object.name}
-        imgsrc={object.pfp_link}
-        about={object.description}
-        location={object.location}
-        byline={object.byline}
-        experiences={object.experiences}
-        educations={object.educations}
+      {...profile}
       />
-      <Footer></Footer>
+      <Footer copyright={profile.name} contacts={{...contacts}}></Footer>
     </div>
   );
 }

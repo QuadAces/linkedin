@@ -3,6 +3,7 @@ import { MdMessage, MdPhone } from "react-icons/md";
 import Resume from "./resume";
 import { useContext } from "react";
 import { Context } from "../lib/context";
+import { UserProfile } from "../types/user";
 
 export default function profile({
     name = "John Doe",
@@ -14,7 +15,7 @@ export default function profile({
     byline = "",
     educations = [],
     experiences = [],
-}) {
+} : UserProfile ) {
     return (
         <div className="flex flex-row mx-16 space-x-8 flex-grow">
             <div className="flex flex-col space-y-8">
@@ -23,6 +24,7 @@ export default function profile({
                     className=" rounded !h-64 !w-64"
                     width={250} //used to satisfy param requirements but not actually used
                     height={250}
+                    alt={`Profile Picture of ${name}`}
                 />
             </div>
 

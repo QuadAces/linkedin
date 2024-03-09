@@ -1,8 +1,14 @@
 import { Spacer } from "@nextui-org/react";
 import { BLOCKED_PAGES } from "next/dist/shared/lib/constants";
 import Image from "next/image";
+import { UserEducation, UserExperience } from "../types/user";
 
-export default function Resume({ educations = [], experiences = [] }) {
+interface ResumeProps {
+    educations : UserEducation[],
+    experiences : UserExperience[],
+}
+
+export default function Resume({ educations = [], experiences = [] } : ResumeProps) {
     return (
         <div className="flex flex-row space-x-8 flex-grow py-8 mx-auto">
             <div className="flex flex-col space-y-16 ">
@@ -16,6 +22,7 @@ export default function Resume({ educations = [], experiences = [] }) {
                                     className="w-16 h-16"
                                     width={150}
                                     height={150}
+                                    alt={name}
                                 />
                                 <div className="flex flex-col">
                                     <div>{name}</div>
@@ -35,6 +42,7 @@ export default function Resume({ educations = [], experiences = [] }) {
                                     className="w-16 h-16"
                                     width={150}
                                     height={150}
+                                    alt={name}
                                 />
                                 <div className="flex flex-col">
                                     <div>
